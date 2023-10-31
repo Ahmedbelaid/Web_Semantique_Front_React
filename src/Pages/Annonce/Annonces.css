@@ -1,0 +1,26 @@
+/* Annonce.css */
+.annonce-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* This sets the container to full viewport height */
+  }
+  
+  .search {
+    margin: 20px 0;
+  }
+  
+  .annonce-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .annonce-table th, .annonce-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Add more styles as needed */
+  
