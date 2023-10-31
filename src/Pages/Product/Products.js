@@ -70,10 +70,29 @@ function Product() {
   const filteredData = sortedData.filter((product) =>
     product.description.includes(searchTerm)
   );
+  const handlePostRequest = () => {
+    axios
+      .get("http://localhost:8000/getDigitalProductsWithDetailsOrdred")
+      .then((response) => {
+        // Handle the successful response here
+        console.log("POST request successful:", response.data);
+        const formattedDataa = response.data.results.bindings;
+        setProductData(formattedDataa);
 
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("POST request error:", error);
+      });
+  };
   return (
     <div className="product-container">
       <h1>Digital Products</h1>
+      <div>
+        <button className="btn btn-primary" onClick={handlePostRequest}>
+          Sort
+        </button>
+      </div>
       <div className="search">
         <Input
           type="text"

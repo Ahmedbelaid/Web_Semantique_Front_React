@@ -34,7 +34,7 @@ function App() {
           <Route path="/events" element={<Event />} />
           <Route path="/venues" element={<Venue />} />
           <Route path="/barterRequests" element={<BarterRequests />} />
-          <Route path="/Responses" element={<Response />} />
+          <Route path="/responses" element={<Response />} />
           <Route path="/forums" element={<Forum />} />
 
 

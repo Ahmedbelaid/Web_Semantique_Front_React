@@ -63,7 +63,21 @@ function Annonce() {
       }
     });
   }
+  const handlePostRequest = () => {
+    axios
+      .get("http://localhost:8000/getAnnoncesWithDetailsOrdred")
+      .then((response) => {
+        // Handle the successful response here
+        console.log("POST request successful:", response.data);
+        const formattedData = response.data.results.bindings;
+        setFormData(formattedData);
 
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("POST request error:", error);
+      });
+  };
   const filteredData = sortedData.filter((annonce) =>
     annonce.description.includes(searchTerm)
   );
@@ -71,6 +85,11 @@ function Annonce() {
   return (
     <div className="annonce-container">
       <h1>Annonce Data</h1>
+      <div>
+        <button className="btn btn-primary" onClick={handlePostRequest}>
+          Sort
+        </button>
+      </div>
       <div className="search">
         <Input
           type="text"

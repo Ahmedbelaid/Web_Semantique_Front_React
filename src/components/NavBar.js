@@ -12,35 +12,35 @@ import {
   useMediaQuery,
   useDisclosure,
   HStack,
-  
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 import ProfileArray from "./ProfileArray";
-import { Link } from 'react-router-dom';
- 
+import { Link } from "react-router-dom";
+
 const TbIcons = require("react-icons/tb");
 
 export default function Nav({ color }) {
   const profile = ProfileArray();
   const colors = {
-  "blue": "#3182CE", 
-  "cyan": "#00B5D8", 
-  "gray": "#718096", 
-  "green": "#38A169", 
-  "orange": "#DD6B20", 
-  "pink": "#D53F8C", 
-  "purple": "#805AD5", 
-  "red": "#E53E3E", 
-  "teal": "#319795", 
-  "yellow": "#D69E2E"};
+    blue: "#3182CE",
+    cyan: "#00B5D8",
+    gray: "#718096",
+    green: "#38A169",
+    orange: "#DD6B20",
+    pink: "#D53F8C",
+    purple: "#805AD5",
+    red: "#E53E3E",
+    teal: "#319795",
+    yellow: "#D69E2E",
+  };
   const [scroll, setScroll] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const [isLargerThanMD] = useMediaQuery("(min-width: 48em)");
   const scrollToHero = () => {
-  const heroSection = document.querySelector("#hero");
+    const heroSection = document.querySelector("#hero");
     heroSection.scrollIntoView({ behavior: "smooth" });
   };
   const scrollToAbout = () => {
@@ -88,7 +88,7 @@ export default function Nav({ color }) {
         justifyContent={"space-between"}
         w="100%"
       >
-        <Link  to="/">
+        <Link to="/">
           <HStack>
             {TbLetterComponents.map((Component, index) => (
               <Component key={index} color={colors[color]} />
@@ -100,37 +100,51 @@ export default function Nav({ color }) {
           <Stack direction={"row"} spacing={7}>
             {isLargerThanMD ? (
               <>
-            
-            <Link to="/category"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Category
-        </Button>
-      </Link>
-                <Link to="/announce"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Annonces
-        </Button>
-      </Link>
-      <Link to="/products"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Products
-        </Button>
-      </Link>
-      <Link to="/form"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Form
-        </Button>
-      </Link>
-      <Link to="/barter"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Barter
-        </Button>
-      </Link>
-      <Link to="/reports"> {/* Link to the Announce page */}
-        <Button variant="ghost">
-          Reports
-        </Button>
-      </Link>
+                <Link to="/category">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Category</Button>
+                </Link>
+                <Link to="/announce">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Annonces</Button>
+                </Link>
+                <Link to="/events">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Events</Button>
+                </Link>
+                <Link to="/forums">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Forums</Button>
+                </Link>
+                <Link to="/responses">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Responses</Button>
+                </Link>
+                <Link to="/venues">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Venues</Button>
+                </Link>
+                <Link to="/products">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Products</Button>
+                </Link>
+                <Link to="/form">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Form</Button>
+                </Link>
+                <Link to="/barterRequests">
+                  {" "}
+                  {/* Link to the Announce page */}
+                  <Button variant="ghost">Barter</Button>
+                </Link>
               </>
             ) : (
               <></>

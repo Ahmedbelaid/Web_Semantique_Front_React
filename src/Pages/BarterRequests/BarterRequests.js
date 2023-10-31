@@ -26,10 +26,29 @@ function BarterRequests() {
  /* const filteredData = formData.filter((form) =>
     form.description.includes(searchTerm)
   );*/
+  const handlePostRequest = () => {
+    axios
+      .get("http://localhost:8000/getBarterRequestsOrdred")
+      .then((response) => {
+        // Handle the successful response here
+        console.log("POST request successful:", response.data);
+        const formattedDataa = response.data.results.bindings;
+        setFormData(formattedDataa);
 
+      })
+      .catch((error) => {
+        // Handle errors here
+        console.error("POST request error:", error);
+      });
+  };
   return (
     <div className="form-container">
       <h1>Event Data</h1>
+      <div>
+        <button className="btn btn-primary" onClick={handlePostRequest}>
+          Sort
+        </button>
+      </div>
       <div className="search">
         <input
           type="text"
