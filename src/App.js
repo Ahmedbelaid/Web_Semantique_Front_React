@@ -5,10 +5,10 @@ import Header from './components/Hero';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Annonce from './Pages/Annonces';
-import Form from './Pages/Form';
 import Barter from './Pages/Barter';
 import Category from './Pages/Category';
 import Products from './Pages/Products';
+import Form from './Pages/Form/Form';
 
 function App() {
   const color = "teal";
