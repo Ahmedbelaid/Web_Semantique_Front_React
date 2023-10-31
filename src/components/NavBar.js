@@ -126,6 +126,11 @@ export default function Nav({ color }) {
           Barter
         </Button>
       </Link>
+      <Link to="/reports"> {/* Link to the Announce page */}
+        <Button variant="ghost">
+          Reports
+        </Button>
+      </Link>
               </>
             ) : (
               <></>

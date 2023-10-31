@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Form.css';
+import './Report.css';
 import {
   Table,
   Thead,
@@ -9,26 +9,26 @@ import {
   Th,
   Td,
   Input,
-  useColorModeValue,
   IconButton,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 
-function Form() {
-  const [formData, setFormData] = useState([]);
+function Reports() {
+  const [reportsData, setReportsData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortBy, setSortBy] = useState(null);
   const [sortOrder, setSortOrder] = useState('asc');
 
   useEffect(() => {
-    axios.get('http://localhost:8000/getFormsWithDetails')
+    axios.get('http://localhost:8000/getReportsWithDetails')
       .then(response => {
         const formattedData = response.data.results.bindings.map(binding => ({
-          form: binding.form.value,
-          description: binding.description.value,
-          image: binding.image.value,
+          report: binding.report.value,
+          cause: binding.cause.value,
+          senderName: binding.senderName.value,
         }));
-        setFormData(formattedData);
+        setReportsData(formattedData);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
@@ -48,7 +48,7 @@ function Form() {
     }
   };
 
-  const sortedData = formData.slice(0);
+  const sortedData = reportsData.slice(0);
   if (sortBy) {
     sortedData.sort((a, b) => {
       if (sortOrder === 'asc') {
@@ -59,60 +59,60 @@ function Form() {
     });
   }
 
-  const filteredData = sortedData.filter((form) =>
-    form.description.includes(searchTerm)
+  const filteredData = sortedData.filter((report) =>
+    report.cause.includes(searchTerm) || report.senderName.includes(searchTerm)
   );
 
   return (
-    <div className="form-container">
-      <h1>Form Data</h1>
+    <div className="reports-container">
+      <h1>Reports Data</h1>
       <div className="search">
         <Input
           type="text"
-          placeholder="Search by Description"
+          placeholder="Search by Cause or Sender Name"
           value={searchTerm}
           onChange={handleSearch}
           bg={useColorModeValue('gray.100', 'gray.700')}
         />
       </div>
-      <Table className="form-table">
+      <Table className="reports-table">
         <Thead>
           <Tr>
-            <Th onClick={() => handleSort('form')}>
-              Form
-              {sortBy === 'form' && sortOrder === 'asc' && (
+            <Th onClick={() => handleSort('report')}>
+              Report
+              {sortBy === 'report' && sortOrder === 'asc' && (
                 <TriangleDownIcon />
               )}
-              {sortBy === 'form' && sortOrder === 'desc' && (
+              {sortBy === 'report' && sortOrder === 'desc' && (
                 <TriangleUpIcon />
               )}
             </Th>
-            <Th onClick={() => handleSort('description')}>
-              Description
-              {sortBy === 'description' && sortOrder === 'asc' && (
+            <Th onClick={() => handleSort('cause')}>
+              Cause
+              {sortBy === 'cause' && sortOrder === 'asc' && (
                 <TriangleDownIcon />
               )}
-              {sortBy === 'description' && sortOrder === 'desc' && (
+              {sortBy === 'cause' && sortOrder === 'desc' && (
                 <TriangleUpIcon />
               )}
             </Th>
-            <Th onClick={() => handleSort('image')}>
-              Image
-              {sortBy === 'image' && sortOrder === 'asc' && (
+            <Th onClick={() => handleSort('senderName')}>
+              Sender Name
+              {sortBy === 'senderName' && sortOrder === 'asc' && (
                 <TriangleDownIcon />
               )}
-              {sortBy === 'image' && sortOrder === 'desc' && (
+              {sortBy === 'senderName' && sortOrder === 'desc' && (
                 <TriangleUpIcon />
               )}
             </Th>
           </Tr>
         </Thead>
         <Tbody>
-          {filteredData.map((form, index) => (
+          {filteredData.map((report, index) => (
             <Tr key={index}>
-              <Td>{form.form}</Td>
-              <Td>{form.description}</Td>
-              <Td>{form.image}</Td>
+              <Td>{report.report}</Td>
+              <Td>{report.cause}</Td>
+              <Td>{report.senderName}</Td>
             </Tr>
           ))}
         </Tbody>
@@ -121,4 +121,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default Reports;

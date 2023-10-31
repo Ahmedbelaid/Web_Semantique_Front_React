@@ -4,11 +4,12 @@ import Nav from './components/NavBar';
 import Header from './components/Hero';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Annonce from './Pages/Annonces';
 import Barter from './Pages/Barter';
 import Category from './Pages/Category';
-import Products from './Pages/Products';
+import Products from './Pages/Product/Products';
 import Form from './Pages/Form/Form';
+import Annonce from './Pages/Annonce/Annonces';
+import Reports from './Pages/Report/Reports';
 
 function App() {
   const color = "teal";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/announce" element={<Annonce />} />
           <Route path="/category" element={<Category />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/reports" element={<Reports/>} />
 
           <Route path="/" element={<Header color={color} />} />
         </Routes>
