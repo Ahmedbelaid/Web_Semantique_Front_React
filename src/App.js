@@ -11,6 +11,12 @@ import Form from './Pages/Form/Form';
 import Annonce from './Pages/Annonce/Annonces';
 import Reports from './Pages/Report/Reports';
 
+import Event from './Pages/Event/Event';
+import Venue from './Pages/Venue/Venue';
+import BarterRequests from './Pages/BarterRequests/BarterRequests';
+import Response from './Pages/Response/Response';
+import Forum from './Pages/Forum/Forum';
+
 function App() {
   const color = "teal";
 
@@ -25,6 +31,15 @@ function App() {
           <Route path="/category" element={<Category />} />
           <Route path="/products" element={<Products />} />
           <Route path="/reports" element={<Reports/>} />
+          <Route path="/events" element={<Event />} />
+          <Route path="/venues" element={<Venue />} />
+          <Route path="/barterRequests" element={<BarterRequests />} />
+          <Route path="/Responses" element={<Response />} />
+          <Route path="/forums" element={<Forum />} />
+
+
+
+
 
           <Route path="/" element={<Header color={color} />} />
         </Routes>
