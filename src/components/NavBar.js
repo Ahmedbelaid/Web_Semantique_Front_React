@@ -100,7 +100,7 @@ export default function Nav({ color }) {
           <Stack direction={"row"} spacing={7}>
             {isLargerThanMD ? (
               <>
-            s
+            
             <Link to="/category"> {/* Link to the Announce page */}
         <Button variant="ghost">
           Category
