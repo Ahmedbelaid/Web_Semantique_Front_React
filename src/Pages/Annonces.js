@@ -6,7 +6,7 @@ function Announce() {
   return (
     <>
       <Nav />
-      <Footer/>
+      <Footer/> 
     </>
 
   );
