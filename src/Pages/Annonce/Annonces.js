@@ -63,6 +63,9 @@ function Annonce() {
       }
     });
   }
+  const filteredData = sortedData.filter((annonce) =>
+  annonce.description.includes(searchTerm)
+);
   const handlePostRequest = () => {
     axios
       .get("http://localhost:8000/getAnnoncesWithDetailsOrdred")
@@ -78,9 +81,7 @@ function Annonce() {
         console.error("POST request error:", error);
       });
   };
-  const filteredData = sortedData.filter((annonce) =>
-    annonce.description.includes(searchTerm)
-  );
+
 
   return (
     <div className="annonce-container">
